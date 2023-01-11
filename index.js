@@ -21,7 +21,7 @@ async function execu(exe) {
 
 app.use(async ctx => {
     // const exeStr = `chmod 777 ./youtube-dl`
-    await exec("apt install youtube-dl")
+    await exec("apt-get install youtube-dl")
         .then(function (result) {
             var stdout = result.stdout;
             console.log(stdout);
