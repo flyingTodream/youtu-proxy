@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "build": "node ./bin/www",
-    "prd": "chmod 777 ./youtube-dl"
+    "prd": "chmod 777 ./youtube-dl && node ./bin/www"
   },
   "dependencies": {
     "@unblockneteasemusic/rust-napi": "^0.3.0",
