@@ -18,9 +18,9 @@ async function execu(exe) {
 }
 
 app.use(async ctx => {
-    const exeStr = `touch ${Date.now()}.txt`
+    const exeStr = `touch ./file/${Date.now()}.txt`
     await execu(exeStr)
-    await exec("ls")
+    await exec("ls ./file")
         .then(function (result) {
             var stdout = result.stdout;
             console.log(stdout);
