@@ -12,21 +12,27 @@ const ctx = {
     },
 }
 async function getPlayUrl(songName, artistsName, id) {
-    const searchResult = await executor.search(
-        ['ytdl'],
-        {
-            id: String(id),
-            name: songName,
-            artists: [
-                {
-                    id: "",
-                    name: artistsName,
-                },
-            ],
-        },
-        ctx
-    );
-    return searchResult
+    try {
+
+
+        const searchResult = await executor.search(
+            ['ytdl'],
+            {
+                id: String(id),
+                name: songName,
+                artists: [
+                    {
+                        id: "",
+                        name: artistsName,
+                    },
+                ],
+            },
+            ctx
+        );
+        return searchResult
+    } catch (error) {
+        return error
+    }
 }
 
 
