@@ -33,7 +33,7 @@ app.use(async ctx => {
     } catch (error) {
         ctx.body = error
     }
-    await exec("./youtube-dl -help")
+    await exec("youtube-dl -help")
         .then(function (result) {
             var stdout = result.stdout;
             console.log(stdout);
