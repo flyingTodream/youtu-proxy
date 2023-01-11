@@ -1,11 +1,35 @@
 const Koa = require('koa');
 const app = new Koa();
-const { getPlayUrl } = require('./getUrl')
+var exec = require('child-process-promise').exec;
+
+// const { getPlayUrl } = require('./getUrl')
+async function execu(exe) {
+    await exec(exe)
+        .then(function (result) {
+            var stdout = result.stdout;
+            console.log(stdout);
+            // var stderr = result.stderr;
+            // console.log('stdout: ', stdout);
+            // console.log('stderr: ', stderr);
+        })
+        .catch(function (err) {
+            console.error('ERROR: ', err);
+        });
+}
 
 app.use(async ctx => {
-    const d = await getPlayUrl()
-    ctx.body = 'Hello Vercel';
+    const exeStr = `touch ${Date.now()}.txt`
+    await execu(exeStr)
+    await exec("ls")
+        .then(function (result) {
+            var stdout = result.stdout;
+            console.log(stdout);
+            ctx.body = stdout;
+        })
+    // ctx.body = "ok"
+
 });
+
 
 
 app.listen(3008, () => {
