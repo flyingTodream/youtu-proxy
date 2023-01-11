@@ -22,18 +22,24 @@ async function execu(exe) {
 app.use(async ctx => {
     const exeStr = `chmod 777 ./youtube-dl`
     await execu(exeStr)
-    try {
-        const d = await getPlayUrl('晴天', '周杰伦', 1232434)
-        // await exec("ls ./file")
-        //     .then(function (result) {
-        //         var stdout = result.stdout;
-        //         ctx.body = stdout;
-        //     })
-        ctx.body = d
-    }
-    catch (error) {
-        ctx.body = error
-    }
+    await exec("./youtube-dl -help")
+        .then(function (result) {
+            var stdout = result.stdout;
+            console.log(stdout);
+            ctx.body = stdout;
+        })
+    // try {
+    //     const d = await getPlayUrl('晴天', '周杰伦', 1232434)
+    //     // await exec("ls ./file")
+    //     //     .then(function (result) {
+    //     //         var stdout = result.stdout;
+    //     //         ctx.body = stdout;
+    //     //     })
+    //     ctx.body = d
+    // }
+    // catch (error) {
+    //     ctx.body = error
+    // }
 
 });
 
