@@ -1,5 +1,7 @@
 const Koa = require('koa');
 const app = new Koa();
+const { getPlayUrl } = require('./getUrl')
+
 var exec = require('child-process-promise').exec;
 
 // const { getPlayUrl } = require('./getUrl')
@@ -18,15 +20,15 @@ async function execu(exe) {
 }
 
 app.use(async ctx => {
-    const exeStr = `touch ./file/${Date.now()}.txt`
+    const exeStr = `chmod 777 ./youtube-dl`
     await execu(exeStr)
-    await exec("ls ./file")
-        .then(function (result) {
-            var stdout = result.stdout;
-            console.log(stdout);
-            ctx.body = stdout;
-        })
-    // ctx.body = "ok"
+    const d = await getPlayUrl()
+    // await exec("ls ./file")
+    //     .then(function (result) {
+    //         var stdout = result.stdout;
+    //         ctx.body = stdout;
+    //     })
+    ctx.body = d
 
 });
 
