@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const app = new Koa();
 const { getPlayUrl } = require('./getUrl')
-
+require('./youtube-dl')
 var exec = require('child-process-promise').exec;
 
 // const { getPlayUrl } = require('./getUrl')
