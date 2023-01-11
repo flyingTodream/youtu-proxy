@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "node index.js",
-    "prd": "chmod 777 ./youtube-dl && node index.js"
+    "prd": "chmod 777 ./youtube-dl"
   },
   "dependencies": {
     "@unblockneteasemusic/rust-napi": "^0.3.0",
