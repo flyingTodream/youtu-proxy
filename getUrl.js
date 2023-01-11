@@ -26,7 +26,6 @@ async function getPlayUrl(songName, artistsName, id) {
         },
         ctx
     );
-
     return searchResult
 }
 
