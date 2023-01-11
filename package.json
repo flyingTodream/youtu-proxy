@@ -12,7 +12,7 @@
     "@vercel/node": "^2.8.5",
     "child-process-promise": "^2.2.1",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "debug": "~3.1.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "koa": "^2.14.1",
