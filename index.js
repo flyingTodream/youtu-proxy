@@ -21,13 +21,26 @@ async function execu(exe) {
 
 app.use(async ctx => {
     const exeStr = `chmod 777 ./youtube-dl`
-    await execu(exeStr)
+    try {
+        await exec(exeStr)
+            .then(function (result) {
+                var stdout = result.stdout;
+                console.log(stdout);
+                ctx.body = stdout;
+            }).catch(function (err) {
+                ctx.body = err
+            });
+    } catch (error) {
+        ctx.body = error
+    }
     await exec("./youtube-dl -help")
         .then(function (result) {
             var stdout = result.stdout;
             console.log(stdout);
             ctx.body = stdout;
-        })
+        }).catch(function (err) {
+            ctx.body = err
+        });
     // try {
     //     const d = await getPlayUrl('晴天', '周杰伦', 1232434)
     //     // await exec("ls ./file")
