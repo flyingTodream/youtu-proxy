@@ -18,6 +18,8 @@ router.get('/', async ctx => {
 });
 
 router.post('/', async function (ctx, next) {
+  console.log('-----')
+  console.log(ctx.request)
   const { proName } = ctx.request.body;
   const number = num[proName] || 1;
   num[proName] = number + 1
