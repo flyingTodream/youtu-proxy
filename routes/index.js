@@ -22,7 +22,7 @@ router.post('/', async function (req, res, next) {
   const number = num[proName] || 1;
   num[proName] = number + 1
   const d = new Date();
-  res.send(`dist-${proName}-${padNumber(2, Number(d.getMonth() + 1))}${padNumber(2, d.getDate())}-${padNumber(3, number)}`);
+  res.body = `dist-${proName}-${padNumber(2, Number(d.getMonth() + 1))}${padNumber(2, d.getDate())}-${padNumber(3, number)}`;
 });
 
 function padNumber(num, val) {
