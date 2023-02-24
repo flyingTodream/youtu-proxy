@@ -6,7 +6,7 @@ const num = {
   'cm': 1,
   'duar': 1
 }
-schedule.scheduleJob('10 * * * * *', () => {
+schedule.scheduleJob('30 1 1 * * *', () => {
   num.dlc = 1;
   num.cm = 1;
   num.duar = 1;
