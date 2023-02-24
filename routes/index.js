@@ -17,12 +17,12 @@ router.get('/', async ctx => {
   ctx.body = 'server is okkkk!'
 });
 
-router.post('/', async function (req, res, next) {
-  const { proName } = req.body;
+router.post('/', async function (ctx, next) {
+  const { proName } = ctx.request.body;
   const number = num[proName] || 1;
   num[proName] = number + 1
   const d = new Date();
-  res.body = `dist-${proName}-${padNumber(2, Number(d.getMonth() + 1))}${padNumber(2, d.getDate())}-${padNumber(3, number)}`;
+  ctx.body = `dist-${proName}-${padNumber(2, Number(d.getMonth() + 1))}${padNumber(2, d.getDate())}-${padNumber(3, number)}`;
 });
 
 function padNumber(num, val) {
