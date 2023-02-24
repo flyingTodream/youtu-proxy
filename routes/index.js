@@ -1,12 +1,20 @@
-var express = require('express');
-var router = express.Router();
-const { getPlayUrl } = require('../getUrl')
+const router = require('koa-router')()
+const schedule = require('node-schedule');
 
-/* GET home page. */
-router.get('/', async function (req, res, next) {
-  res.send('okkk');
+
+const num = {
+  a: 0
+}
+schedule.scheduleJob('10 * * * * *', () => {
+  num.a = 0
 });
-router.get('/a', async function (req, res, next) {  
+/* GET home page. */
+router.get('/', async ctx => {
+  num.a = num.a + 1
+  ctx.body = num.a
+});
+
+router.get('/a', async function (req, res, next) {
   res.send("hello");
 });
 
