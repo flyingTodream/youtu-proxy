@@ -1,70 +1,11 @@
 const Koa = require('koa');
 const app = new Koa();
-const { getPlayUrl } = require('./getUrl')
-require('./youtube-dl')
-var exec = require('child-process-promise').exec;
+const Router = require('koa-router');
+const router = new Router();
 
-// const { getPlayUrl } = require('./getUrl')
-async function execu(exe) {
-    await exec(exe)
-        .then(function (result) {
-            var stdout = result.stdout;
-            console.log(stdout);
-            // var stderr = result.stderr;
-            // console.log('stdout: ', stdout);
-            // console.log('stderr: ', stderr);
-        })
-        .catch(function (err) {
-            console.error('ERROR: ', err);
-        });
-}
-
-app.use(async ctx => {
-    // const exeStr = `chmod 777 ./youtube-dl`
-    const { exeStr } = ctx.query
-    await exec(exeStr)
-        .then(function (result) {
-            var stdout = result.stdout;
-            console.log(stdout);
-            ctx.body = stdout;
-        }).catch(function (err) {
-            ctx.body = err
-        });
-
-    // await exec(exeStr)
-    //     .then(function (result) {
-    //         var stdout = result.stdout;
-    //         console.log(stdout);
-    //         ctx.body = stdout;
-    //     }).catch(function (err) {
-    //         ctx.body = err
-    //     });
-
-    // await exec("./youtube-dl -help")
-    //     .then(function (result) {
-    //         var stdout = result.stdout;
-    //         console.log(stdout);
-    //         ctx.body = stdout;
-    //     }).catch(function (err) {
-    //         ctx.body = err
-    //     });
-    // try {
-    //     const d = await getPlayUrl('晴天', '周杰伦', 1232434)
-    //     // await exec("ls ./file")
-    //     //     .then(function (result) {
-    //     //         var stdout = result.stdout;
-    //     //         ctx.body = stdout;
-    //     //     })
-    //     ctx.body = d
-    // }
-    // catch (error) {
-    //     ctx.body = error
-    // }
-
-});
+app.use(router.routes());
 
 
-
-app.listen(3008, () => {
+app.listen(3000, () => {
     console.log('3008项目启动')
 });
